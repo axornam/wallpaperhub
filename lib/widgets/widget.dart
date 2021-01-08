@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-Widget BrandName() {
+Widget brandName() {
   return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
       Text(
         'Wallpaper',
