@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:wallpaperhub/data/data.dart';
 import 'package:wallpaperhub/model/categories_model.dart';
 import 'package:wallpaperhub/model/wallpaper_model.dart';
+import 'package:wallpaperhub/view/category.dart';
 import 'package:wallpaperhub/view/search.dart';
 import 'package:wallpaperhub/widgets/widget.dart';
 import 'package:http/http.dart' as http;
@@ -48,7 +49,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: brandName(),
+        title: Center(child: brandName()),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
@@ -123,38 +124,48 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(right: 5),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                imgUrl,
-                height: 50,
-                width: 100,
-                fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Category(
+                      categoryName: title.toLowerCase(),
+                    )));
+      },
+      child: Container(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(right: 5),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  imgUrl,
+                  height: 50,
+                  width: 100,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Colors.black26,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            height: 50,
-            width: 100,
-            child: Text(
-              title,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18.0),
-            ),
-          )
-        ],
+            Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.black26,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              height: 50,
+              width: 100,
+              child: Text(
+                title,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18.0),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

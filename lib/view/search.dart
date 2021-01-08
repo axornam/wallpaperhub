@@ -49,7 +49,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: brandName(),
+        title: Center(child: brandName()),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
