@@ -30,6 +30,8 @@ class _HomeState extends State<Home> {
       wallpaperModel = WallpaperModel.fromMap(element);
       wallpapers.add(wallpaperModel);
     });
+
+    setState(() {});
   }
 
   @override
@@ -47,45 +49,51 @@ class _HomeState extends State<Home> {
         title: brandName(),
         elevation: 0.0,
       ),
-      body: Container(
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Color(0xfff5fbfd),
-                  borderRadius: BorderRadius.circular(32)),
-              margin: EdgeInsets.symmetric(horizontal: 24.0),
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: 'Search', border: InputBorder.none),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: Color(0xfff5fbfd),
+                    borderRadius: BorderRadius.circular(32)),
+                margin: EdgeInsets.symmetric(horizontal: 24.0),
+                padding: EdgeInsets.symmetric(horizontal: 24.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: 'Search', border: InputBorder.none),
+                      ),
                     ),
-                  ),
-                  Icon(Icons.search)
-                ],
+                    Icon(Icons.search)
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            Container(
-              height: 80,
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: categories.length,
-                itemBuilder: (context, index) {
-                  return CategoryTile(
-                      title: categories[index].categoriesName,
-                      imgUrl: categories[index].imgUrl);
-                },
+              SizedBox(
+                height: 16,
               ),
-            )
-          ],
+              Container(
+                height: 80,
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    return CategoryTile(
+                        title: categories[index].categoriesName,
+                        imgUrl: categories[index].imgUrl);
+                  },
+                ),
+              ),
+              // SizedBox(
+              //   height: 16,
+              // ),
+              wallPapersList(wallpapers: wallpapers, context: context),
+            ],
+          ),
         ),
       ),
     );
@@ -120,7 +128,10 @@ class CategoryTile extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.center,
-            color: Colors.black26,
+            decoration: BoxDecoration(
+              color: Colors.black26,
+              borderRadius: BorderRadius.circular(8),
+            ),
             height: 50,
             width: 100,
             child: Text(
