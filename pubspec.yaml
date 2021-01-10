@@ -28,7 +28,7 @@ dependencies:
   dio: ^3.0.1
   http: ^0.12.0+4
   image_gallery_saver: ^1.6.7
-  permission_handler: ^4.2.0+hotfix.3
+  permission_handler: ^5.0.1+1
   random_string: ^2.1.0
 
 dev_dependencies:

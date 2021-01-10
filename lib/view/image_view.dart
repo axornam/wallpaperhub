@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
@@ -109,13 +108,16 @@ class _ImageViewState extends State<ImageView> {
 
   _askPersmission() async {
     if (Platform.isIOS) {
-      //
-      Map<PermissionGroup, PermissionStatus> permission =
-          await PermissionHandler()
-              .requestPermissions([PermissionGroup.photos]);
+      // //
+      // Map<PermissionGroup, PermissionStatus> permission =
+      //     await PermissionHandler()
+      //         .requestPermissions([PermissionGroup.photos]);
     } else {
-      PermissionStatus permission = await PermissionHandler()
-          .checkPermissionStatus(PermissionGroup.storage);
+      // PermissionStatus permission = await PermissionHandler()
+      // .checkPermissionStatus(PermissionGroup.storage);
+      if (await Permission.storage.request() != null) {
+        print('Permission For Storage Granted');
+      }
     }
   }
 }
