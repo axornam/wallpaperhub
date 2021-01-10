@@ -4,7 +4,6 @@ import 'package:wallpaperhub/data/data.dart';
 import 'package:wallpaperhub/model/categories_model.dart';
 import 'package:wallpaperhub/model/wallpaper_model.dart';
 import 'package:wallpaperhub/view/category.dart';
-import 'package:wallpaperhub/view/image_view.dart';
 import 'package:wallpaperhub/view/search.dart';
 import 'package:wallpaperhub/widgets/widget.dart';
 import 'package:http/http.dart' as http;
